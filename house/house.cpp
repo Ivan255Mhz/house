@@ -151,8 +151,8 @@ public:
         return size;
     }
 
-    void RegisterPerson(int i) { // прописать персону
-        if (i > size) {
+    void RegisterPerson() { // прописать персону
+        if (RegisteredPersons > size) {
             cout << "Неверный доступ по индексу." << endl;
             return;
         }
@@ -160,11 +160,11 @@ public:
         char FIO[100]{};
         cin.ignore();
         cin.getline(FIO, 100);
-        ResidentsPerson[i] = Person(FIO); // Создаем объект Person с ФИО
+        ResidentsPerson[RegisteredPersons] = Person(FIO); // Создаем объект Person с ФИО
         int age{};
         cout << "Введите возраст : ";
         cin >> age;
-        ResidentsPerson[i].setAge(age); // Устанавливаем возраст
+        ResidentsPerson[RegisteredPersons].setAge(age); // Устанавливаем возраст
         ++RegisteredPersons;
     }
 
@@ -178,6 +178,8 @@ public:
         ResidentsPerson[i].setAge(0);
         --RegisteredPersons;
     }
+
+
 };
 
 ostream& operator<<(ostream& out, const Flat& obj) {
@@ -243,6 +245,7 @@ public:
         else
             --RegisteredPersons;
     }
+   
 
     Flat& operator[](int i) {
         return Apartment[i];
@@ -356,10 +359,7 @@ int main()
             else
             {
                 system("cls");
-                int Apart{};
-                cout << "Введите идекс списка прописки : ";
-                cin >> Apart;
-                a[NumApart].RegisterPerson(Apart);
+                a[NumApart-1].RegisterPerson();
                 a.RegisteredControl(true);
                 system("pause");
                 system("cls");
@@ -369,6 +369,25 @@ int main()
 
         case 4:
         {
+            system("cls");
+            int NumApart{};
+            cout << "Введите номер квартиры : ";
+            cin >> NumApart;
+            if (NumApart - 1 >= a.getNumberOfApartments()) {
+                cout << "В это доме нет квартиры с данным номером" << endl;
+
+            }
+            else
+            {
+                int index{};
+                cout << "Введите индекс списка происки : ";
+                cin >> index;
+                system("cls");
+                a[NumApart - 1].ExpelPerson(index);
+                a.RegisteredControl(false);
+                system("pause");
+                system("cls");
+            }
 
         } break;
 
@@ -379,7 +398,7 @@ int main()
         
         default:
         {
-
+            cout << "Ошибка выбора меню" << endl;
         }break;
 
             
