@@ -224,7 +224,7 @@ public:
     House& operator=(House&& obj) = delete;
 
     void InfoOFHouse() const {
-        cout << "Адресс - " << Street << " - " << HouseNumber << endl;
+        cout << "Адрес - " << Street << " - " << HouseNumber << endl;
         cout << "Квартир в доме - " << NumberOfApartments << endl;
         cout << "Этажей доме - " << flor << endl;
         cout << "Прописано персон - " << RegisteredPersons << endl;
@@ -313,7 +313,7 @@ int main()
     int choice{};
     do {
         cout << "1.Вывести информацию о доме" << endl;
-        cout << "2.Вывемти информацию по квартире" << endl;
+        cout << "2.Вывести информацию по квартире" << endl;
         cout << "3.Прописать персону" << endl;
         cout << "4.Выписать персону" << endl;
         cout << "5.Выход" << endl;
